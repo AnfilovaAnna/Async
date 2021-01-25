@@ -12,11 +12,11 @@ fun testSharedResources() {
     var thread1 = Thread()
 
     thread1 = thread {
-        while (i.toInt() <= 100) {
+        while (i.toInt() <= 120) {
 
-            i.getAndAdd((1..5).random())
+            i.getAndAdd(1)
 
-            if (i.toInt() >= 100 && thread2.isAlive) {
+            if (i.toInt() >= 120 && thread2.isAlive) {
                 Log.d("TAG", "First thread win")
                 thread2.interrupt()
                 break
@@ -35,7 +35,7 @@ fun testSharedResources() {
     thread2 = thread {
         while (i.toInt() <= 100) {
 
-            i.getAndAdd((1..5).random())
+            i.getAndAdd(1)
 
             if (i.toInt() >= 100 && thread1.isAlive) {
                 Log.d("TAG", "Second thread win")
